@@ -43,7 +43,7 @@ filename = args.filename + ext
 # Get OpenAI API key (Option #1): Import from environmental variable
 #openai.api_key = os.getenv("OPENAI_API_KEY")
 # Get OpenAI API key (Option #2): Import from text file
-with open('API Key.txt', 'r') as file:
+with open('api_key.txt', 'r') as file:
     openai.api_key = file.read().rstrip()
 
 # Execute OpenAI API completion request and store response
@@ -56,5 +56,5 @@ response = openai.Completion.create(
 
 # Write file to disk
 response_text = response.choices[0]["text"]
-with open(filename, "w") as file:
+with open("output/" + filename, "w") as file:
     file.write(response_text)
