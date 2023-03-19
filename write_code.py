@@ -1,5 +1,5 @@
-# script_from_chatgpt.py [language] [prompt] [filename]
-# This python will utilize the OpenAI API in order to generate code and save directly to disk.
+# write_codepy [language] [prompt] [filename]
+# This python script will utilize the OpenAI API in order to generate code and save directly to disk.
 # Last updated: March 19, 2023
 # Author: Ryan Priore (ryan.priore@gmail.com)
 #
@@ -8,7 +8,7 @@
 #     prompt: the prompt to send to OpenAI API
 #     filename: the filename of script or function to be written to disk w/o extension
 # Example:
-#     python3 script_from_chatgpt.py "python" "calculate the first 10 prime numbers" "prime"
+#     python3 write_code.py "python" "calculate the first 10 prime numbers" "prime"
 
 import argparse
 import openai
