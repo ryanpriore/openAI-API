@@ -48,7 +48,7 @@ with open('api_key.txt', 'r') as file:
 
 # Execute OpenAI API completion request and store response
 response = openai.Completion.create(
-    model = "code-davinci-003",
+    model = "text-davinci-003",
     prompt = prompt,
     max_tokens = 2000,
     temperature = 0.5
