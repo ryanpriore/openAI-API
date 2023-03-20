@@ -56,5 +56,5 @@ response = openai.Completion.create(
 
 # Write file to disk
 response_text = response.choices[0]["text"]
-with open("output/" + filename, "w") as file:
+with open("code_output/" + filename, "w") as file:
     file.write(response_text)
