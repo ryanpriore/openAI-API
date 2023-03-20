@@ -1,5 +1,6 @@
 # API Key
 api_key.txt
 
-# Output directory
-output/
+# Output directories
+code_output/
+image_output/
