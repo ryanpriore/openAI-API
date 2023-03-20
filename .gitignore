@@ -4,3 +4,6 @@ api_key.txt
 # Output directories
 code_output/
 image_output/
+
+# VScode Workspaces
+*.code-workspace
