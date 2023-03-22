@@ -8,10 +8,9 @@
 
 from base64 import b64decode
 import io
-import json
 import openai
 import os
-from PIL import Image
+from PIL import Image, PngImagePlugin
 import PySimpleGUI as sg
 
 # Get OpenAI API key (Option #1): Import from environmental variable
@@ -24,9 +23,12 @@ with open('api_key.txt', 'r') as file:
 file_types = [("PNG (*.png)", "*.png")]
 
 # Create default variables
-prompt = "Origami monkey"
-size = "1024x1024"
-image = []
+#prompt = "Origami monkey"
+#size = "1024x1024"
+#image = []
+
+# Create a new PngInfo object
+metadata = PngImagePlugin.PngInfo()
 
 # Convert array to data
 def array_to_data(array):
@@ -81,14 +83,15 @@ def main():
             with open(filename, mode = "wb") as png:
                 png.write(image_data)
             image = Image.open(filename)
-            image.thumbnail((512, 512))
+            image_thumb = image.copy()
+            image_thumb.thumbnail((512, 512))
             bio = io.BytesIO()
-            image.save(bio, format = "PNG")
+            image_thumb.save(bio, format = "PNG")
             window["-IMAGE-"].update(data = bio.getvalue())
         if event == "Save Image":
-            filename = "image_output/" + values["filename"]
-            with open(filename + ".png", mode = "wb") as png:
-                png.write(image_data)
+            filename = "image_output/" + values["filename"] +".png"
+            metadata.add_text('Description', prompt)
+            image.save(filename, pnginfo = metadata)
 
     window.close()
 
